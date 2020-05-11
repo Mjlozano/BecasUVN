@@ -5,8 +5,11 @@
  */
 package becasuvn;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,9 +19,25 @@ import javafx.fxml.Initializable;
  */
 public class HomeController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    JFXTextField usertxt;
+    
+    @FXML
+    JFXPasswordField passwtxt;
+    
+    boolean VerifyUser(){
+        if(usertxt.getText().isEmpty() || passwtxt.getText().isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    @FXML
+    void logIn(){
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
