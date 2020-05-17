@@ -1,0 +1,18 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+
+.logContainer {
+    -fx-border-radius: 30px;
+    -fx-background-radius: 30px;
+}
+
+.logB {
+    -fx-border-radius: 51px;
+    -fx-background-radius: 51px;
+}

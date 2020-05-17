@@ -49,9 +49,10 @@ public class splashScreenController implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Scene scene = new Scene(root,600,400);
+                Scene scene = new Scene(root);
                 ventanaApp.setScene(scene);
-                ventanaApp.setTitle("Inicio");
+                ventanaApp.setTitle("Login");
+                ventanaApp.setResizable(false);
                 ventanaApp.show();
             }
         });
