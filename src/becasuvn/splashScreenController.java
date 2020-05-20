@@ -19,7 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.sql.Connection;
 /**
  *
  * @author Jesus Lozano
@@ -28,6 +28,8 @@ public class splashScreenController implements Initializable {
     
     @FXML
     private AnchorPane splash;
+    
+     ConexionMySQL session = new ConexionMySQL(); 
     
     
     @Override
@@ -42,6 +44,13 @@ public class splashScreenController implements Initializable {
             public void handle(ActionEvent event) {
                 Stage ventana = (Stage) splash.getScene().getWindow();
                 ventana.hide();
+                Connection conn = session.config("test", "root", "manexrules23");
+            if (conn != null){
+                System.out.println("Sesion lista");
+            }else{
+                System.out.println("Credenciales Invalidas");
+                
+            }
                 Stage ventanaApp = new Stage();
                 Parent root = null;
                 try {
