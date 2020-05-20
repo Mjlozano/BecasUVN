@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="679.0" prefWidth="1095.0" styleClass="mainFxmlClass" stylesheets="@Styles/dashboard.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="becasuvn.DashboardController">
+   <children>
+      <AnchorPane prefHeight="44.0" prefWidth="1095.0" style="-fx-background-color: #e53935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutY="82.0" prefHeight="200.0" prefWidth="1095.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton fx:id="dashB" alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" layoutX="29.0" layoutY="32.0" onAction="#NuevaBeca" prefHeight="137.0" prefWidth="190.0" style="-fx-background-color: #e53835;" styleClass="dashB" text="Crear Beca" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="23.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="81.0" fitWidth="77.0" layoutX="29.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" styleClass="icoImg">
+               <image>
+                  <Image url="@../assets/images/icons/addB2.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="239.0" layoutY="32.0" prefHeight="137.0" prefWidth="235.0" style="-fx-background-color: #1e88e5;" styleClass="dashB">
+               <children>
+                  <Label layoutX="82.0" layoutY="95.0" text="N° Aspirantes" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="23.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="89.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="icoImg">
+                     <image>
+                        <Image url="@../assets/images/icons/aspirantesIco.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="501.0" layoutY="32.0" prefHeight="137.0" prefWidth="235.0" style="-fx-background-color: #1e88e5;" styleClass="dashB">
+               <children>
+                  <Label layoutX="131.0" layoutY="95.0" text="N° Becas" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI" size="23.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="78.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" styleClass="icoImg">
+                     <image>
+                        <Image url="@../assets/images/icons/becaIco.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="651.0" prefHeight="28.0" prefWidth="90.0" style="-fx-background-color: #eeeeee;">
+         <children>
+            <Label layoutX="6.0" layoutY="6.0" text="Status:" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -7,11 +7,20 @@ package becasuvn;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import java.sql.Connection;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -39,7 +48,7 @@ public class HomeController implements Initializable {
     }
     
     @FXML
-    void logIn(){
+    void logIn(ActionEvent e) throws IOException{
         if (this.VerifyUser()){
             /*Connection conn = session.config("test", usertxt.getText(), passwtxt.getText());
             if (conn != null){
@@ -49,6 +58,21 @@ public class HomeController implements Initializable {
                 
             }*/
         }
+       go(e); 
+       
+    }
+    
+    @FXML
+    private void go(ActionEvent e) throws IOException {      
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Becas UVN");
+            stage.setScene(new Scene(root));
+            stage.show();
+            ((Node)(e.getSource())).getScene().getWindow().hide();
+        
     }
     
     @Override

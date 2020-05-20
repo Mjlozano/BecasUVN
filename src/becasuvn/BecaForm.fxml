@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="679.0" prefWidth="1095.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="becasuvn.BecaFormController">
+    <stylesheets>
+        <URL value="@/becasuvn/Styles/becaform.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane prefHeight="44.0" prefWidth="1095.0" style="-fx-background-color: #e53935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <JFXScrollPane layoutY="112.0" prefHeight="565.0" prefWidth="1095.0" />
+      <Label layoutX="78.0" layoutY="55.0" text="Nueva Beca">
+         <font>
+            <Font name="Segoe UI" size="35.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
