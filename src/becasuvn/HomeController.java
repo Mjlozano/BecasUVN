@@ -41,13 +41,13 @@ public class HomeController implements Initializable {
     @FXML
     void logIn(){
         if (this.VerifyUser()){
-            Connection conn = session.config("test", usertxt.getText(), passwtxt.getText());
+            /*Connection conn = session.config("test", usertxt.getText(), passwtxt.getText());
             if (conn != null){
                 System.out.println("Sesion lista");
             }else{
                 System.out.println("Credenciales Invalidas");
                 
-            }
+            }*/
         }
     }
     
