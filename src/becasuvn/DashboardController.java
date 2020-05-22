@@ -18,14 +18,15 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import java.sql.Connection;
 /**
  * FXML Controller class
  *
  * @author Jesus Lozano
  */
 public class DashboardController implements Initializable {
-
+   
+    
     @FXML
     private void NuevaBeca(ActionEvent e) throws IOException {      
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BecaForm.fxml"));
