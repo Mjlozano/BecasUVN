@@ -31,6 +31,9 @@ public class splashScreenController implements Initializable {
     
      ConexionMySQL session = new ConexionMySQL(); 
     
+     public ConexionMySQL getConn(){
+         return session;
+     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
