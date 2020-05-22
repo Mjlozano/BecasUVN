@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="876.0" styleClass="mainFxmlClass" stylesheets="@Styles/home.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="becasuvn.HomeController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="876.0" styleClass="mainFxmlClass" stylesheets="@Styles/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="becasuvn.HomeController">
    <children>
       <Pane prefHeight="53.0" prefWidth="874.0" style="-fx-background-color: #d32f2f;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane layoutX="273.0" layoutY="121.0" prefHeight="329.0" prefWidth="330.0" style="-fx-background-color: #ffffff;" styleClass="logContainer" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="273.0" AnchorPane.topAnchor="121.0">
@@ -34,7 +34,7 @@
                   <Image url="@../assets/images/icons/passwIco.png" />
                </image>
             </ImageView>
-            <JFXButton contentDisplay="TEXT_ONLY" layoutX="80.0" layoutY="223.0" prefHeight="47.0" prefWidth="170.0" style="-fx-background-color: #d32f2f;" styleClass="logB" text="Iniciar Sesión" textFill="WHITE">
+            <JFXButton contentDisplay="TEXT_ONLY" layoutX="80.0" layoutY="223.0" onAction="#logIn" prefHeight="47.0" prefWidth="170.0" style="-fx-background-color: #d32f2f;" styleClass="logB" text="Iniciar Sesión" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font>
