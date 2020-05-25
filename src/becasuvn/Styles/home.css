@@ -16,3 +16,7 @@
     -fx-border-radius: 51px;
     -fx-background-radius: 51px;
 }
+
+.Img{
+     -fx-opacity: 0.8;    
+}
