@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
 <AnchorPane id="AnchorPane" prefHeight="679.0" prefWidth="1095.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="becasuvn.FormAspiranteController">
    <children>
       <AnchorPane prefHeight="44.0" prefWidth="1095.0" style="-fx-background-color: #e53935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <JFXTextField fx:id="nombretxt" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="107.0" prefHeight="35.0" prefWidth="212.0" promptText="Nombre" />
+      <JFXDatePicker fx:id="f_nac" defaultColor="#e53935" layoutX="216.0" layoutY="281.0" prefHeight="44.0" prefWidth="212.0" promptText="Fecha de nacimiento" />
+      <JFXComboBox fx:id="beca" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="474.0" prefHeight="35.0" prefWidth="212.0" promptText="Beca a aplicar" />
+      <JFXTextField fx:id="direccion" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="350.0" prefHeight="35.0" prefWidth="212.0" promptText="Dirección" />
+      <JFXTextArea fx:id="req_info" focusColor="#e53935" labelFloat="true" layoutX="554.0" layoutY="89.0" prefHeight="194.0" prefWidth="326.0" promptText="Requisitos" />
+      <JFXTextArea fx:id="benef_info" focusColor="#e53935" labelFloat="true" layoutX="554.0" layoutY="300.0" prefHeight="174.0" prefWidth="326.0" promptText="Beneficios" />
+      <JFXComboBox fx:id="estrato" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="413.0" prefHeight="35.0" prefWidth="212.0" promptText="Estrato Socieconomico" />
+      <JFXButton buttonType="RAISED" layoutX="637.0" layoutY="500.0" prefHeight="44.0" prefWidth="161.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Cargar Documentos" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/icons/upload.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXComboBox fx:id="t_doc" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="167.0" prefHeight="35.0" prefWidth="212.0" promptText="Tipo de documento" />
+      <JFXTextField fx:id="num_doc" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="226.0" prefHeight="35.0" prefWidth="212.0" promptText="N° de documento" />
+      <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="603.0" prefHeight="54.0" prefWidth="201.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Aplicar" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

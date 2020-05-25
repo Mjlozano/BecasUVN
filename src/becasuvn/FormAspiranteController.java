@@ -5,8 +5,13 @@
  */
 package becasuvn;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,12 +21,22 @@ import javafx.fxml.Initializable;
  */
 public class FormAspiranteController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    JFXTextField nombretxt, num_doc;
+    
+    @FXML
+    JFXComboBox t_doc, estrato, beca;
+    
+    @FXML
+    JFXDatePicker f_nac;
+    
+    @FXML
+    JFXTextArea req_info, benef_info;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        req_info.setEditable(false);
+        benef_info.setEditable(false);
     }    
     
 }
