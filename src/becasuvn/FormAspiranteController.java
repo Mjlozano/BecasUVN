@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -32,6 +33,17 @@ public class FormAspiranteController implements Initializable {
     
     @FXML
     JFXTextArea req_info, benef_info;
+    
+    
+    @FXML
+    void aplicar(ActionEvent e){ //Para aplicar a la beca
+        
+    }
+    
+    @FXML
+    void upload(ActionEvent e){ //Para subir archivos
+        
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

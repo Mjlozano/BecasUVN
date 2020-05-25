@@ -21,7 +21,7 @@
       <JFXTextArea fx:id="req_info" focusColor="#e53935" labelFloat="true" layoutX="554.0" layoutY="89.0" prefHeight="194.0" prefWidth="326.0" promptText="Requisitos" />
       <JFXTextArea fx:id="benef_info" focusColor="#e53935" labelFloat="true" layoutX="554.0" layoutY="300.0" prefHeight="174.0" prefWidth="326.0" promptText="Beneficios" />
       <JFXComboBox fx:id="estrato" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="413.0" prefHeight="35.0" prefWidth="212.0" promptText="Estrato Socieconomico" />
-      <JFXButton buttonType="RAISED" layoutX="637.0" layoutY="500.0" prefHeight="44.0" prefWidth="161.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Cargar Documentos" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="637.0" layoutY="500.0" onAction="#upload" prefHeight="44.0" prefWidth="161.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Cargar Documentos" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -32,7 +32,7 @@
       </JFXButton>
       <JFXComboBox fx:id="t_doc" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="167.0" prefHeight="35.0" prefWidth="212.0" promptText="Tipo de documento" />
       <JFXTextField fx:id="num_doc" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="226.0" prefHeight="35.0" prefWidth="212.0" promptText="N° de documento" />
-      <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="603.0" prefHeight="54.0" prefWidth="201.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Aplicar" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="447.0" layoutY="603.0" onAction="#aplicar" prefHeight="54.0" prefWidth="201.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Aplicar" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="20.0" />
          </font>
