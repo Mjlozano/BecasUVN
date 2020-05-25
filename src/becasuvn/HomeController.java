@@ -31,30 +31,37 @@ public class HomeController implements Initializable {
 
     @FXML
     JFXTextField usertxt;
-    
+
     @FXML
     JFXPasswordField passwtxt;
-    
-    ConexionMySQL session = new ConexionMySQL(); 
-    
-    boolean VerifyUser(){
-        if(usertxt.getText().isEmpty() || passwtxt.getText().isEmpty()){
+
+    ConexionMySQL session = new ConexionMySQL();
+
+    boolean VerifyUser() {
+        if (usertxt.getText().isEmpty() || passwtxt.getText().isEmpty()) {
             System.out.println("Campos vacios");
             return false;
-        }else{
+        } else {
             System.out.println("We good to go");
             return true;
         }
     }
-    
+
     @FXML
-    void aspiranteForm(ActionEvent e){ // Lleva al formulario para aspirar a una beca
-        
+    void aspiranteForm(ActionEvent e) throws IOException { // Lleva al formulario para aspirar a una beca
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FormAspirante.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Becas UVN");
+        stage.setScene(new Scene(root));
+        stage.show();
+        ((Node) (e.getSource())).getScene().getWindow().hide();
     }
-    
+
     @FXML
-    void logIn(ActionEvent e) throws IOException{
-        if (this.VerifyUser()){
+    void logIn(ActionEvent e) throws IOException {
+        if (this.VerifyUser()) {
             /*Connection conn = session.config("test", usertxt.getText(), passwtxt.getText());
             if (conn != null){
                 System.out.println("Sesion lista");
@@ -63,26 +70,26 @@ public class HomeController implements Initializable {
                 
             }*/
         }
-       go(e); 
-       
+        go(e);
+
     }
-    
+
     @FXML
-    private void go(ActionEvent e) throws IOException {      
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Becas UVN");
-            stage.setScene(new Scene(root));
-            stage.show();
-            ((Node)(e.getSource())).getScene().getWindow().hide();
-        
+    private void go(ActionEvent e) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Becas UVN");
+        stage.setScene(new Scene(root));
+        stage.show();
+        ((Node) (e.getSource())).getScene().getWindow().hide();
+
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }
