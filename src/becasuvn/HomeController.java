@@ -48,6 +48,11 @@ public class HomeController implements Initializable {
     }
     
     @FXML
+    void aspiranteForm(ActionEvent e){ // Lleva al formulario para aspirar a una beca
+        
+    }
+    
+    @FXML
     void logIn(ActionEvent e) throws IOException{
         if (this.VerifyUser()){
             /*Connection conn = session.config("test", usertxt.getText(), passwtxt.getText());
