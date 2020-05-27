@@ -2,9 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -18,7 +17,7 @@
     </stylesheets>
    <children>
       <AnchorPane prefHeight="44.0" prefWidth="1095.0" style="-fx-background-color: #e53935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="224.0" layoutY="61.0" prefHeight="596.0" prefWidth="692.0" style="-fx-background-color: #f5f5f5;" styleClass="logContainer" stylesheets="@Styles/home.css">
+      <AnchorPane layoutX="202.0" layoutY="61.0" prefHeight="596.0" prefWidth="692.0" style="-fx-background-color: #f5f5f5;" styleClass="logContainer" stylesheets="@Styles/home.css" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="201.0">
          <children>
             <JFXTextField fx:id="nombreBecatxt" focusColor="#e53935" labelFloat="true" layoutX="28.0" layoutY="72.0" prefHeight="43.0" prefWidth="264.0" promptText="Nombre">
                <font>
@@ -27,30 +26,42 @@
             </JFXTextField>
             <JFXDatePicker fx:id="f_Iniciotxt" defaultColor="#e53935" layoutX="35.0" layoutY="200.0" prefHeight="43.0" prefWidth="127.0" promptText="Inicio" />
             <JFXDatePicker fx:id="f_finaltxt" defaultColor="#e53935" layoutX="180.0" layoutY="200.0" prefHeight="43.0" prefWidth="127.0" promptText="Fin" />
-            <JFXTextArea fx:id="beneficiostxt" focusColor="#e53935" labelFloat="true" layoutX="30.0" layoutY="284.0" prefHeight="185.0" prefWidth="264.0" promptText="Beneficios" />
             <Label layoutX="35.0" layoutY="152.0" text="Fecha convocatoria: ">
                <font>
                   <Font name="Segoe UI Bold" size="13.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="doctxt" focusColor="#e53935" layoutX="398.0" layoutY="284.0" prefHeight="36.0" prefWidth="181.0" promptText="Documento" />
-            <JFXButton buttonType="RAISED" layoutX="592.0" layoutY="288.0" onAction="#addDoc" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Agregar" textFill="WHITE">
+            <JFXTextField fx:id="doctxt" focusColor="#e53935" layoutX="398.0" layoutY="329.0" prefHeight="36.0" prefWidth="181.0" promptText="Documento" />
+            <JFXButton buttonType="RAISED" layoutX="592.0" layoutY="333.0" onAction="#addDoc" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Agregar" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </JFXButton>
-            <JFXTextArea fx:id="requisitostxt" focusColor="#e53935" layoutX="398.0" layoutY="36.0" prefHeight="185.0" prefWidth="264.0" promptText="Requisitos" />
-            <Label layoutX="398.0" layoutY="243.0" text="Documentos requeridos:">
+            <Label layoutX="398.0" layoutY="288.0" text="Documentos requeridos:">
                <font>
                   <Font name="Segoe UI Bold" size="13.0" />
                </font>
             </Label>
-            <JFXTreeTableView layoutX="398.0" layoutY="334.0" prefHeight="185.0" prefWidth="264.0" />
-            <JFXButton buttonType="RAISED" layoutX="294.0" layoutY="531.0" onAction="#crearBeca" prefHeight="44.0" prefWidth="139.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Crear" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="277.0" layoutY="531.0" onAction="#crearBeca" prefHeight="44.0" prefWidth="139.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Crear" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="595.0" layoutY="80.0" onAction="#addDoc" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Agregar" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="requisitostxt" focusColor="#e53935" labelFloat="true" layoutX="398.0" layoutY="76.0" prefHeight="36.0" prefWidth="181.0" promptText="Requisito" />
+            <JFXButton buttonType="RAISED" layoutX="232.0" layoutY="276.0" onAction="#addDoc" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Agregar" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="beneficiostxt" focusColor="#e53935" labelFloat="true" layoutX="35.0" layoutY="272.0" prefHeight="36.0" prefWidth="181.0" promptText="Beneficio" />
+            <JFXListView layoutX="35.0" layoutY="326.0" prefHeight="129.0" prefWidth="264.0" />
+            <JFXListView layoutX="398.0" layoutY="136.0" prefHeight="129.0" prefWidth="264.0" />
+            <JFXListView layoutX="398.0" layoutY="382.0" prefHeight="129.0" prefWidth="264.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="31.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #e53935;" styleClass="dashB" stylesheets="@Styles/dashboard.css">
