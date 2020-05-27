@@ -7,7 +7,7 @@ package becasuvn;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +23,7 @@ import javafx.fxml.Initializable;
 public class FormAspiranteController implements Initializable {
 
     @FXML
-    JFXTextField nombretxt, num_doc;
+    JFXTextField nombretxt, num_doc, emailtxt;
     
     @FXML
     JFXComboBox t_doc, estrato, beca;
@@ -32,7 +32,7 @@ public class FormAspiranteController implements Initializable {
     JFXDatePicker f_nac;
     
     @FXML
-    JFXTextArea req_info, benef_info;
+    JFXListView req_info, benef_info;
     
     
     @FXML

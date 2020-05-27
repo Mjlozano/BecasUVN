@@ -6,7 +6,6 @@
 package becasuvn;
 
 import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,11 +21,11 @@ import javafx.fxml.Initializable;
 public class BecaFormController implements Initializable {
 
     @FXML
-    JFXTextField nombreBecatxt, doctxt;
+    JFXTextField nombreBecatxt, doctxt, n_cupostxt;
     @FXML
     JFXDatePicker f_iniciotxt, f_finaltxt;
     @FXML
-    JFXTextArea beneficiostxt, requisitostxt;
+    JFXTextField beneficiostxt, requisitostxt;
     
     
     @FXML
@@ -38,6 +37,17 @@ public class BecaFormController implements Initializable {
     void addDoc(ActionEvent e){  //Metodo para añadir un documento
         
     }
+    
+    @FXML
+    void addReq(ActionEvent e){  //Metodo para añadir un requisito
+        
+    }
+    
+    @FXML
+    void addBenef(ActionEvent e){  //Metodo para añadir un beneficio
+        
+    }
+    
     
     
     @Override
