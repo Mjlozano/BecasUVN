@@ -19,48 +19,77 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.input.KeyCombination;
+
 /**
  * FXML Controller class
  *
  * @author Jesus Lozano
  */
 public class DashboardController implements Initializable {
-   
+
     @FXML
-      Menu debugmenu;
+    Menu debugmenu;
     
     @FXML
-    private void openDebug(ActionEvent e) throws IOException {      
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Debug.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            
-            stage.setTitle("Debug");
-            stage.setScene(new Scene(root));
-            stage.show();
-           
+    Label n_aspiranteslabel, n_becaslabel;
+
+    ConexionMySQL SQL;
+    Connection conn;
+    Statement st = null;
+    ResultSet rs = null;
+
+    @FXML
+    private void openDebug(ActionEvent e) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Debug.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+
+        stage.setTitle("Debug");
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 
-    
     @FXML
-    private void NuevaBeca(ActionEvent e) throws IOException {      
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BecaForm.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            
-            stage.setTitle("Becas UVN");
-            stage.setScene(new Scene(root));
-            stage.show();
-            ((Node)(e.getSource())).getScene().getWindow().hide();
-            
-        
+    private void NuevaBeca(ActionEvent e) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BecaForm.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+
+        stage.setTitle("Becas UVN");
+        stage.setScene(new Scene(root));
+        stage.show();
+        ((Node) (e.getSource())).getScene().getWindow().hide();
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        SQL = new ConexionMySQL();
+        conn = SQL.config("test", "root", "manexrules23");
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select count(id) from beca");
+            int tempid = 0;
+            while (rs.next()) {
+                tempid = rs.getInt(1);
+            }
+            n_becaslabel.setText(String.valueOf(tempid));
+             st = conn.createStatement();
+            rs = st.executeQuery("select count(doc) from aspirante");
+            int nasp = 0;
+            while (rs.next()) {
+                nasp = rs.getInt(1);
+            }
+            n_aspiranteslabel.setText(String.valueOf(nasp));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
 }

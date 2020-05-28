@@ -53,6 +53,11 @@
                         <Image url="@../assets/images/icons/aspirantesIco.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="n_aspiranteslabel" layoutX="129.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" text="7777777" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="501.0" layoutY="32.0" prefHeight="137.0" prefWidth="235.0" style="-fx-background-color: #1e88e5;" styleClass="dashB">
@@ -67,6 +72,11 @@
                         <Image url="@../assets/images/icons/becaIco.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="n_becaslabel" layoutX="131.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" text="7777777" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

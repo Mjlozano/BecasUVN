@@ -62,7 +62,7 @@
             <JFXListView fx:id="list_benef" layoutX="30.0" layoutY="382.0" prefHeight="129.0" prefWidth="264.0" />
             <JFXListView fx:id="list_req" layoutX="398.0" layoutY="136.0" prefHeight="129.0" prefWidth="264.0" />
             <JFXListView fx:id="list_doc" layoutX="398.0" layoutY="382.0" prefHeight="129.0" prefWidth="264.0" />
-            <JFXTextField fx:id="n_cupostxt" layoutX="31.0" layoutY="265.0" prefHeight="36.0" prefWidth="125.0" text="N° de Cupos" />
+            <JFXTextField fx:id="n_cupostxt" layoutX="31.0" layoutY="265.0" prefHeight="36.0" prefWidth="125.0" promptText="N° de Cupos" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="31.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #e53935;" styleClass="dashB" stylesheets="@Styles/dashboard.css">
@@ -79,6 +79,6 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXButton layoutX="14.0" layoutY="632.0" prefHeight="28.0" prefWidth="63.0" text="Atras" />
+      <JFXButton layoutX="14.0" layoutY="632.0" onAction="#atras" prefHeight="28.0" prefWidth="63.0" text="Atras" />
    </children>
 </AnchorPane>
