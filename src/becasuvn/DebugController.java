@@ -6,6 +6,7 @@
 package becasuvn;
 
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTreeTableView;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,6 +16,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TreeTableColumn;
 
 /**
  * FXML Controller class
@@ -32,6 +34,9 @@ public class DebugController implements Initializable {
     JFXTextArea queryarea;
     
     @FXML
+    JFXTreeTableView resulttable;
+    
+    @FXML
     public void testConnection(){
         session = new ConexionMySQL();
         conn = session.config("test", "root", "manexrules23");
@@ -42,9 +47,11 @@ public class DebugController implements Initializable {
         st = conn.createStatement();
         rs = st.executeQuery(queryarea.getText());
         while (rs.next()) {
-                //Retrieve by column name
+                
                 Date fecha =  rs.getDate("fecha");
                 System.out.println(fecha.toString());
+                
+                
             }
             rs.close();
     }

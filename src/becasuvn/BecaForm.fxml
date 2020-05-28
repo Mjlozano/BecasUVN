@@ -24,7 +24,7 @@
                   <Font name="Segoe UI" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXDatePicker fx:id="f_Iniciotxt" defaultColor="#e53935" layoutX="35.0" layoutY="200.0" prefHeight="43.0" prefWidth="127.0" promptText="Inicio" />
+            <JFXDatePicker fx:id="f_iniciotxt" defaultColor="#e53935" layoutX="35.0" layoutY="200.0" prefHeight="43.0" prefWidth="127.0" promptText="Inicio" />
             <JFXDatePicker fx:id="f_finaltxt" defaultColor="#e53935" layoutX="180.0" layoutY="200.0" prefHeight="43.0" prefWidth="127.0" promptText="Fin" />
             <Label layoutX="35.0" layoutY="152.0" text="Fecha convocatoria: ">
                <font>

@@ -19,6 +19,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.sql.Connection;
+import javafx.scene.control.Menu;
+import javafx.scene.input.KeyCombination;
 /**
  * FXML Controller class
  *
@@ -26,6 +28,21 @@ import java.sql.Connection;
  */
 public class DashboardController implements Initializable {
    
+    @FXML
+      Menu debugmenu;
+    
+    @FXML
+    private void openDebug(ActionEvent e) throws IOException {      
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Debug.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            
+            stage.setTitle("Debug");
+            stage.setScene(new Scene(root));
+            stage.show();
+           
+    }
+
     
     @FXML
     private void NuevaBeca(ActionEvent e) throws IOException {      
