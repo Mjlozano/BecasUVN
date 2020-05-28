@@ -5,6 +5,10 @@
  */
 package becasuvn;
 
+import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,9 +25,17 @@ import javafx.stage.StageStyle;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
 import javafx.scene.input.KeyCombination;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -42,6 +54,12 @@ public class DashboardController implements Initializable {
     Connection conn;
     Statement st = null;
     ResultSet rs = null;
+    
+    @FXML
+    private JFXTreeTableView<Aspirante> treeView;
+    
+    ObservableList<Aspirante> aspirantes = FXCollections.observableArrayList();
+    
 
     @FXML
     private void openDebug(ActionEvent e) throws IOException {
@@ -53,6 +71,67 @@ public class DashboardController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
 
+    }
+    
+    @FXML
+    private void filter(ActionEvent event) {
+    }
+
+    class Aspirante extends RecursiveTreeObject<Aspirante> { //Clase para mostrar los datos
+
+        StringProperty beca;
+        StringProperty nombre;
+        StringProperty ide;
+
+        public Aspirante(String ide, String nombre, String beca) {
+            this.ide = new SimpleStringProperty(ide); //#1        
+            this.nombre = new SimpleStringProperty(nombre); //#2
+            this.beca = new SimpleStringProperty(beca); //#3
+        }
+
+    }
+    
+    void showTable() { // codigo bien 70triplehp solo para mostrar unos datos en una tabla
+        JFXTreeTableColumn<Aspirante, String> id = new JFXTreeTableColumn<>("Identificación");
+        id.setPrefWidth(150);
+        id.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Aspirante, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Aspirante, String> param) {
+                return param.getValue().getValue().ide;
+            }
+        });
+
+        JFXTreeTableColumn<Aspirante, String> name = new JFXTreeTableColumn<>("Nombre");
+        name.setPrefWidth(200);
+        id.setResizable(true);
+        name.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Aspirante, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Aspirante, String> param) {
+                return param.getValue().getValue().nombre;
+            }
+        });
+
+        JFXTreeTableColumn<Aspirante, String> scholarS = new JFXTreeTableColumn<>("Beca");
+        scholarS.setPrefWidth(150);
+        scholarS.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Aspirante, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Aspirante, String> param) {
+                return param.getValue().getValue().beca;
+            }
+        });
+        
+        addP(); //agrega los elementos a mostrar
+
+        final TreeItem<Aspirante> root = new RecursiveTreeItem<Aspirante>(aspirantes, RecursiveTreeObject::getChildren);
+        treeView.getColumns().setAll(id, name, scholarS);
+        treeView.setRoot(root);
+        treeView.setShowRoot(false);
+    }
+
+    void addP() { //Aqui añade los objetos que va a mostrar la tabla
+        aspirantes.add(new Aspirante("9595125", "Jesus Lozano", "generacion E"));
+        aspirantes.add(new Aspirante("313213", "Juancho", "Electricaribe"));
+        aspirantes.add(new Aspirante("5345345", "Issa Careverga", "La beca de los vale verga"));  
     }
 
     @FXML
@@ -70,6 +149,8 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        showTable();
+        
         SQL = new ConexionMySQL();
         conn = SQL.config("test", "root", "manexrules23");
         try {
