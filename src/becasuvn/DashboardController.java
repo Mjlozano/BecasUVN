@@ -120,7 +120,7 @@ public class DashboardController implements Initializable {
             }
         });
         
-        addP(); //agrega los elementos a mostrar
+        //addP(); //agrega los elementos a mostrar
 
         final TreeItem<Aspirante> root = new RecursiveTreeItem<Aspirante>(aspirantes, RecursiveTreeObject::getChildren);
         treeView.getColumns().setAll(id, name, scholarS);
@@ -161,11 +161,18 @@ public class DashboardController implements Initializable {
                 tempid = rs.getInt(1);
             }
             n_becaslabel.setText(String.valueOf(tempid));
-             st = conn.createStatement();
+            st = conn.createStatement();
             rs = st.executeQuery("select count(doc) from aspirante");
             int nasp = 0;
             while (rs.next()) {
                 nasp = rs.getInt(1);
+            }
+            n_aspiranteslabel.setText(String.valueOf(nasp));
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from aspirante");
+            while (rs.next()) {
+                Aspirante e = new Aspirante(rs.getString("doc"), rs.getString("nombre"), "ahora ponemos lo de beca xd");
+                aspirantes.add(e);
             }
             n_aspiranteslabel.setText(String.valueOf(nasp));
         } catch (Exception e) {

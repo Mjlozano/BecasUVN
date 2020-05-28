@@ -64,7 +64,7 @@ public class BecaFormController implements Initializable {
     @FXML
     void crearBeca(ActionEvent e) throws SQLException {    //Metodo para insertar una beca
         //Las listas no colaboran para la verificacion
-        if (!(nombreBecatxt.getText().isEmpty() || n_cupostxt.getText().isEmpty() || f_iniciotxt.getValue() == null || f_finaltxt.getValue() == null || list_benef.getItems() == null || list_req.getItems() == null || list_doc.getItems() == null)) {
+        if (!(nombreBecatxt.getText().isEmpty() || n_cupostxt.getText().isEmpty() || f_iniciotxt.getValue() == null || f_finaltxt.getValue() == null )){//|| list_benef.getItems() == null || list_req.getItems() == null || list_doc.getItems() == null)) {
             String nBeca = nombreBecatxt.getText();
             String n_cupos = n_cupostxt.getText();
             LocalDate f_inicio = f_iniciotxt.getValue();
@@ -74,6 +74,23 @@ public class BecaFormController implements Initializable {
             List<String> ben_list = list_benef.getItems();
             List<String> req_list = list_req.getItems();
             List<String> doc_list = list_doc.getItems();
+
+            String dldb = "";
+            String rldb = "";
+            String bldb = "";
+            for (String dc : doc_list) {
+                dldb = dc + " " + dldb;
+            }
+
+            for (String r : req_list) {
+                rldb = r + " " + rldb;
+            }
+
+            for (String b : ben_list) {
+                bldb = b + " " + bldb;
+            }
+            
+             //Query Crear Beca
             st = conn.createStatement();
             rs = st.executeQuery("select count(id) from beca");
             int tempid = 0;
@@ -83,8 +100,42 @@ public class BecaFormController implements Initializable {
             tempid++;
             System.out.println("Beca ID: " + tempid);
             st = conn.createStatement();
-            //Query Crear Beca
             st.executeUpdate("insert into beca values(" + tempid + ", '" + nBeca + "', '2020-01', 1, '" + f_inicio + "', '" + f_final + "', " + n_cupos + ")");
+            
+            //Query para documento
+            st = conn.createStatement();
+            rs = st.executeQuery("select count(id) from documentob");
+            int tempidd = 0;
+            while (rs.next()) {
+                tempidd = rs.getInt(1);
+            }
+            tempidd++;
+            st.executeUpdate("insert into documentob values(" + tempidd + ", '"+dldb+"', "+tempid+
+            ")");
+            
+            //Query para beneficio
+             st = conn.createStatement();
+            rs = st.executeQuery("select count(id) from beneficio");
+            int tempidb = 0;
+            while (rs.next()) {
+                tempidb = rs.getInt(1);
+            }
+            tempidb++;
+            st.executeUpdate("insert into beneficio values(" + tempidb + ", '"+bldb+"', "+tempid+
+            ")");
+            
+            
+            //Query para beneficio
+             st = conn.createStatement();
+            rs = st.executeQuery("select count(id) from requisito");
+            int tempidr = 0;
+            while (rs.next()) {
+                tempidr = rs.getInt(1);
+            }
+            tempidr++;
+            st.executeUpdate("insert into requisito values(" + tempidr + ", '"+rldb+"', "+tempid+
+            ")");
+            
             nombreBecatxt.setText("");
             n_cupostxt.setText("");
             f_iniciotxt.setValue(null);
