@@ -183,7 +183,6 @@ public class DashboardController implements Initializable {
     void addP() { //Aqui añade los objetos que va a mostrar la tabla
         aspirantes.add(new Aspirante("9595125", "Jesus Lozano", "generacion E"));
         aspirantes.add(new Aspirante("313213", "Juancho", "Electricaribe"));
-        aspirantes.add(new Aspirante("5345345", "Issa Careverga", "La beca de los vale verga"));
     }
 
     @FXML
@@ -205,7 +204,7 @@ public class DashboardController implements Initializable {
         showTableBeca();
 
         SQL = new ConexionMySQL();
-        conn = SQL.config("test", "root", "manexrules23");
+        conn = SQL.config("uvn", "root", "freischalten");
         try {
             st = conn.createStatement();
             rs = st.executeQuery("select count(id) from beca");

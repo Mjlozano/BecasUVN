@@ -55,7 +55,7 @@
                         <Image url="@../assets/images/icons/aspirantesIco.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="n_aspiranteslabel" layoutX="129.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" text="7777777" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                  <Label fx:id="n_aspiranteslabel" layoutX="129.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" text="7777777" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="27.0" />
                      </font>
@@ -74,7 +74,7 @@
                         <Image url="@../assets/images/icons/becaIco.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="n_becaslabel" layoutX="131.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" text="7777777" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                  <Label fx:id="n_becaslabel" layoutX="131.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" text="7777777" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="27.0" />
                      </font>

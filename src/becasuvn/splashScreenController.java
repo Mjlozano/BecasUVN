@@ -174,7 +174,7 @@ public class splashScreenController implements Initializable {
             public void handle(ActionEvent event) {
                 Stage ventana = (Stage) splash.getScene().getWindow();
                 ventana.hide();
-                Connection conn = session.config("test", "root", "manexrules23");
+                Connection conn = session.config("uvn", "root", "freischalten");
                 errorconn = session.getConn_error();
                 if (conn != null) {
                     System.out.println("Sesion lista");
