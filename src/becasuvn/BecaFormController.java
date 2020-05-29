@@ -29,7 +29,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -64,7 +67,7 @@ public class BecaFormController implements Initializable {
     @FXML
     void crearBeca(ActionEvent e) throws SQLException {    //Metodo para insertar una beca
         //Las listas no colaboran para la verificacion
-        if (!(nombreBecatxt.getText().isEmpty() || n_cupostxt.getText().isEmpty() || f_iniciotxt.getValue() == null || f_finaltxt.getValue() == null )){//|| list_benef.getItems() == null || list_req.getItems() == null || list_doc.getItems() == null)) {
+        if (!(nombreBecatxt.getText().isEmpty() || n_cupostxt.getText().isEmpty() || f_iniciotxt.getValue() == null || f_finaltxt.getValue() == null)) {//|| list_benef.getItems() == null || list_req.getItems() == null || list_doc.getItems() == null)) {
             String nBeca = nombreBecatxt.getText();
             String n_cupos = n_cupostxt.getText();
             LocalDate f_inicio = f_iniciotxt.getValue();
@@ -89,8 +92,8 @@ public class BecaFormController implements Initializable {
             for (String b : ben_list) {
                 bldb = b + "," + bldb;
             }
-            
-             //Query Crear Beca
+
+            //Query Crear Beca
             st = conn.createStatement();
             rs = st.executeQuery("select count(id) from beca");
             int tempid = 0;
@@ -101,7 +104,7 @@ public class BecaFormController implements Initializable {
             System.out.println("Beca ID: " + tempid);
             st = conn.createStatement();
             st.executeUpdate("insert into beca values(" + tempid + ", '" + nBeca + "', '2020-01', 1, '" + f_inicio + "', '" + f_final + "', " + n_cupos + ")");
-            
+
             //Query para documento
             st = conn.createStatement();
             rs = st.executeQuery("select count(id) from documentob");
@@ -110,32 +113,31 @@ public class BecaFormController implements Initializable {
                 tempidd = rs.getInt(1);
             }
             tempidd++;
-            st.executeUpdate("insert into documentob values(" + tempidd + ", '"+dldb+"', "+tempid+
-            ")");
-            
+            st.executeUpdate("insert into documentob values(" + tempidd + ", '" + dldb + "', " + tempid
+                    + ")");
+
             //Query para beneficio
-             st = conn.createStatement();
+            st = conn.createStatement();
             rs = st.executeQuery("select count(id) from beneficio");
             int tempidb = 0;
             while (rs.next()) {
                 tempidb = rs.getInt(1);
             }
             tempidb++;
-            st.executeUpdate("insert into beneficio values(" + tempidb + ", '"+bldb+"', "+tempid+
-            ")");
-            
-            
+            st.executeUpdate("insert into beneficio values(" + tempidb + ", '" + bldb + "', " + tempid
+                    + ")");
+
             //Query para beneficio
-             st = conn.createStatement();
+            st = conn.createStatement();
             rs = st.executeQuery("select count(id) from requisito");
             int tempidr = 0;
             while (rs.next()) {
                 tempidr = rs.getInt(1);
             }
             tempidr++;
-            st.executeUpdate("insert into requisito values(" + tempidr + ", '"+rldb+"', "+tempid+
-            ")");
-            
+            st.executeUpdate("insert into requisito values(" + tempidr + ", '" + rldb + "', " + tempid
+                    + ")");
+
             nombreBecatxt.setText("");
             n_cupostxt.setText("");
             f_iniciotxt.setValue(null);
@@ -185,11 +187,34 @@ public class BecaFormController implements Initializable {
         ((Node) (e.getSource())).getScene().getWindow().hide();
 
     }
+    Callback<DatePicker, DateCell> dayCellFactory = dp -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate item, boolean empty) {
+
+                super.updateItem(item, empty);
+
+                this.setDisable(false);
+                this.setBackground(null);
+
+                // deshabilitar las fechas futuras
+                if (item.isBefore(LocalDate.now())) {
+                    this.setDisable(true);
+                }
+
+               
+            }
+        };
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        f_iniciotxt.setEditable(false);
+        f_finaltxt.setEditable(false);  
         SQL = new ConexionMySQL();
         conn = SQL.config("test", "root", "manexrules23");
+
+        //Deshabilita fechas anteriores a la anterior
+        f_iniciotxt.setDayCellFactory(dayCellFactory);
+        f_finaltxt.setDayCellFactory(dayCellFactory);
     }
 
 }
