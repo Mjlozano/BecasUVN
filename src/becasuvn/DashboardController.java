@@ -46,7 +46,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     Menu debugmenu;
-    
+
     @FXML
     Label n_aspiranteslabel, n_becaslabel;
 
@@ -54,12 +54,15 @@ public class DashboardController implements Initializable {
     Connection conn;
     Statement st = null;
     ResultSet rs = null;
-    
+
     @FXML
     private JFXTreeTableView<Aspirante> treeView;
-    
+
+    @FXML
+    private JFXTreeTableView<Beca> becaView;
+
     ObservableList<Aspirante> aspirantes = FXCollections.observableArrayList();
-    
+    ObservableList<Beca> becas = FXCollections.observableArrayList();
 
     @FXML
     private void openDebug(ActionEvent e) throws IOException {
@@ -72,9 +75,23 @@ public class DashboardController implements Initializable {
         stage.show();
 
     }
-    
+
     @FXML
     private void filter(ActionEvent event) {
+    }
+
+    class Beca extends RecursiveTreeObject<Beca> { //Clase para mostrar los datos
+
+        StringProperty beca;
+        StringProperty convabierta;
+        StringProperty n_asp;
+
+        public Beca(String beca, String convabierta, String n_asp) {
+            this.beca = new SimpleStringProperty(beca);
+            this.convabierta = new SimpleStringProperty(convabierta);
+            this.n_asp = new SimpleStringProperty(n_asp);
+        }
+
     }
 
     class Aspirante extends RecursiveTreeObject<Aspirante> { //Clase para mostrar los datos
@@ -90,7 +107,7 @@ public class DashboardController implements Initializable {
         }
 
     }
-    
+
     void showTable() { // codigo bien 70triplehp solo para mostrar unos datos en una tabla
         JFXTreeTableColumn<Aspirante, String> id = new JFXTreeTableColumn<>("Identificación");
         id.setPrefWidth(150);
@@ -119,19 +136,54 @@ public class DashboardController implements Initializable {
                 return param.getValue().getValue().beca;
             }
         });
-        
-        //addP(); //agrega los elementos a mostrar
 
+        //addP(); //agrega los elementos a mostrar
         final TreeItem<Aspirante> root = new RecursiveTreeItem<Aspirante>(aspirantes, RecursiveTreeObject::getChildren);
         treeView.getColumns().setAll(id, name, scholarS);
         treeView.setRoot(root);
         treeView.setShowRoot(false);
     }
 
+    void showTableBeca() { // codigo bien 70triplehp solo para mostrar unos datos en una tabla
+        JFXTreeTableColumn<Beca, String> id = new JFXTreeTableColumn<>("Nombre");
+        id.setPrefWidth(150);
+        id.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Beca, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Beca, String> param) {
+                return param.getValue().getValue().beca;
+            }
+        });
+
+        JFXTreeTableColumn<Beca, String> name = new JFXTreeTableColumn<>("Conv. Activa");
+        name.setPrefWidth(200);
+        id.setResizable(true);
+        name.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Beca, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Beca, String> param) {
+                return param.getValue().getValue().convabierta;
+            }
+        });
+
+        JFXTreeTableColumn<Beca, String> scholarS = new JFXTreeTableColumn<>("N. de aspirantes");
+        scholarS.setPrefWidth(150);
+        scholarS.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Beca, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Beca, String> param) {
+                return param.getValue().getValue().n_asp;
+            }
+        });
+
+        //addP(); //agrega los elementos a mostrar
+        final TreeItem<Beca> root = new RecursiveTreeItem<Beca>(becas, RecursiveTreeObject::getChildren);
+        becaView.getColumns().setAll(id, name, scholarS);
+        becaView.setRoot(root);
+        becaView.setShowRoot(false);
+    }
+
     void addP() { //Aqui añade los objetos que va a mostrar la tabla
         aspirantes.add(new Aspirante("9595125", "Jesus Lozano", "generacion E"));
         aspirantes.add(new Aspirante("313213", "Juancho", "Electricaribe"));
-        aspirantes.add(new Aspirante("5345345", "Issa Careverga", "La beca de los vale verga"));  
+        aspirantes.add(new Aspirante("5345345", "Issa Careverga", "La beca de los vale verga"));
     }
 
     @FXML
@@ -150,7 +202,8 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         showTable();
-        
+        showTableBeca();
+
         SQL = new ConexionMySQL();
         conn = SQL.config("test", "root", "manexrules23");
         try {
@@ -174,7 +227,18 @@ public class DashboardController implements Initializable {
                 Aspirante e = new Aspirante(rs.getString("doc"), rs.getString("nombre"), "ahora ponemos lo de beca xd");
                 aspirantes.add(e);
             }
-            n_aspiranteslabel.setText(String.valueOf(nasp));
+            st = conn.createStatement();
+            rs = st.executeQuery("select * from beca");
+            while (rs.next()) {
+                String convstatus = "";
+                if (rs.getString("abierto").equals("1")) {
+                    convstatus = "Sí";
+                } else {
+                    convstatus = "No";
+                }
+                Beca e = new Beca(rs.getString("nombre"), convstatus, String.valueOf(rs.getInt("cupos")));
+                becas.add(e);
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }

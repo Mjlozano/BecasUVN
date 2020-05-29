@@ -38,7 +38,7 @@ public class FormAspiranteController implements Initializable {
     JFXTextField nombretxt, num_doc, emailtxt, direccion;
 
     @FXML
-    JFXComboBox t_doc, estrato, beca;
+    JFXComboBox<String> t_doc, estrato, beca;
 
     @FXML
     JFXDatePicker f_nac;
@@ -46,10 +46,53 @@ public class FormAspiranteController implements Initializable {
     @FXML
     JFXListView req_info, benef_info;
 
+    void comboBoxReady() {
+        t_doc.getItems().add("Tarjeta de Identidad");
+        t_doc.getItems().add("Cedula Extranjera");
+        t_doc.getItems().add("Cedúla de Ciudadanía");
+        estrato.getItems().add("1");
+        estrato.getItems().add("2");
+        estrato.getItems().add("3");
+        estrato.getItems().add("4");
+        estrato.getItems().add("5");
+        estrato.getItems().add("6");
+    }
+
+    @FXML
+    void listChangerCB(ActionEvent e) throws SQLException {
+        req_info.getItems().clear();
+        benef_info.getItems().clear();
+        String beca_n = beca.getValue();
+        //select r.requisito from requisito as r, beca as b where b.id = r.beca_id and b.nombre = "qweqeqeqw"
+        st = conn.createStatement();
+        rs = st.executeQuery("select r.requisito from requisito as r, beca as b where b.id = r.beca_id and b.nombre = '" + beca_n + "'");
+        String temp = "";
+        while (rs.next()) {
+            //split por comas
+            temp = rs.getString(1);
+            String tmp[] = temp.split(",");
+            for (String s : tmp) {
+                req_info.getItems().add(s);
+            }
+        }
+        st = conn.createStatement();
+        rs = st.executeQuery("select ben.beneficios from beneficio as ben, beca as b where b.id = ben.beca_id and b.nombre = '" + beca_n + "'");
+        String tempb = "";
+        while (rs.next()) {
+            //split por comas
+            tempb = rs.getString(1);
+            String tmp[] = tempb.split(",");
+            for (String s : tmp) {
+                benef_info.getItems().add(s);
+
+            }
+        }
+    }
+
     @FXML
     void aplicar(ActionEvent e) throws SQLException { //Para aplicar a la beca
         //Las listas no colaboran para la verificacion
-       // if (!(nombretxt.getText().isEmpty() || emailtxt.getText().isEmpty() || f_nac.getValue() == null || t_doc.getValue() == null || emailtxt.getText().isEmpty() || direccion.getText().isEmpty() || estrato.getValue() == null || beca.getValue() == null)) {
+        if (!(nombretxt.getText().isEmpty() || emailtxt.getText().isEmpty() || f_nac.getValue() == null || t_doc.getValue() == null || emailtxt.getText().isEmpty() || direccion.getText().isEmpty() || estrato.getValue() == null || beca.getValue() == null)) {
             String n_beca = (String) beca.getValue();
             String n_asp = nombretxt.getText();
             String id_num = (num_doc.getText());
@@ -76,15 +119,15 @@ public class FormAspiranteController implements Initializable {
             emailtxt.setText("");
             f_nac.setValue(null);
             estrato.setValue(null);
-           t_doc.setValue(null);
+            t_doc.setValue(null);
             direccion.setText("");
-       /* } else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Datos Incompletos");
             alert.setHeaderText("Debe de llenar todos los campos.");
             //alert.setContentText("No se pudo conectar con el servidor. ¿Está el servicio corriendo?");
             alert.show();
-        }*/
+        }
     }
 
     @FXML
@@ -98,6 +141,18 @@ public class FormAspiranteController implements Initializable {
         benef_info.setEditable(false);
         SQL = new ConexionMySQL();
         conn = SQL.config("test", "root", "manexrules23");
+        comboBoxReady();
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery("select nombre from beca");
+            String becas = "";
+            while (rs.next()) {
+                becas = rs.getString(1);
+                beca.getItems().add(becas);
+            }
+        } catch (Exception e) {
+
+        }
     }
 
 }

@@ -38,7 +38,7 @@ import javafx.stage.Stage;
  */
 
 /*I would go to you if I could fly
-   so 'll grip my seat and close my eyes
+   so i'll grip my seat and close my eyes
    There are things that feel to big to send along in letters to the clouds
     I don't need to want what I don't have
     Getting trapped in stories at my hands
@@ -79,15 +79,15 @@ public class BecaFormController implements Initializable {
             String rldb = "";
             String bldb = "";
             for (String dc : doc_list) {
-                dldb = dc + " " + dldb;
+                dldb = dc + "," + dldb;
             }
 
             for (String r : req_list) {
-                rldb = r + " " + rldb;
+                rldb = r + "," + rldb;
             }
 
             for (String b : ben_list) {
-                bldb = b + " " + bldb;
+                bldb = b + "," + bldb;
             }
             
              //Query Crear Beca

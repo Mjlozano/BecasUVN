@@ -16,9 +16,9 @@
       <AnchorPane prefHeight="44.0" prefWidth="1095.0" style="-fx-background-color: #e53935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <JFXTextField fx:id="nombretxt" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="107.0" prefHeight="35.0" prefWidth="212.0" promptText="Nombre" />
       <JFXDatePicker fx:id="f_nac" defaultColor="#e53935" layoutX="216.0" layoutY="281.0" prefHeight="44.0" prefWidth="212.0" promptText="Fecha de nacimiento" />
-      <JFXComboBox fx:id="beca" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="520.0" prefHeight="35.0" prefWidth="212.0" promptText="Beca a aplicar" />
+      <JFXComboBox fx:id="beca" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="520.0" onAction="#listChangerCB" prefHeight="35.0" prefWidth="212.0" promptText="Beca a aplicar" />
       <JFXTextField fx:id="direccion" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="396.0" prefHeight="35.0" prefWidth="212.0" promptText="Dirección" />
-      <JFXComboBox fx:id="estrato" editable="true" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="459.0" prefHeight="35.0" prefWidth="212.0" promptText="Estrato Socieconomico" />
+      <JFXComboBox fx:id="estrato" focusColor="#e53935" labelFloat="true" layoutX="216.0" layoutY="459.0" prefHeight="35.0" prefWidth="212.0" promptText="Estrato Socieconomico" />
       <JFXButton buttonType="RAISED" layoutX="710.0" layoutY="456.0" onAction="#upload" prefHeight="44.0" prefWidth="161.0" style="-fx-background-color: #e53935;" styleClass="logB" stylesheets="@Styles/home.css" text="Cargar Documentos" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">

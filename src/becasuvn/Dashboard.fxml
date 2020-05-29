@@ -17,7 +17,7 @@
    <children>
       <AnchorPane prefHeight="44.0" prefWidth="1095.0" style="-fx-background-color: #e53935;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="0.0">
+            <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="0.0" prefWidth="0.0">
               <menus>
                 <Menu fx:id="debugmenu" mnemonicParsing="false" text="Debug">
                   <items>
@@ -99,5 +99,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <JFXTreeTableView fx:id="becaView" layoutX="598.0" layoutY="323.0" prefHeight="310.0" prefWidth="472.0" />
    </children>
 </AnchorPane>
