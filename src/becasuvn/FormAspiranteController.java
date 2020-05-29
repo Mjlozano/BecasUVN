@@ -102,16 +102,16 @@ public class FormAspiranteController implements Initializable {
             String a_t_doc = (String) t_doc.getValue();
             String a_dir = direccion.getText();
             //List<String> doc_list = list_doc.getItems();
-            /*st = conn.createStatement();
-            rs = st.executeQuery("select count(id) from beca");
-            int tempid = 0;
-            while (rs.next()) {
-                tempid = rs.getInt(1);
-            }
-            tempid++;*/
-            System.out.println("Aspirante ID: " + id_num);
             st = conn.createStatement();
-            //Query Crear Beca
+            rs = st.executeQuery("select id from beca where nombre = '"+n_beca+"'");
+            int becaid = 0;
+            while (rs.next()) {
+                becaid = rs.getInt(1);
+            }
+            System.out.println("Aspirante ID: " + id_num);
+            //Verificar si ya existe el aspirante
+            st = conn.createStatement();
+            //Query Aspirante
             st.executeUpdate("insert into aspirante values('" + n_asp + "', '" + a_t_doc + "', '" + id_num + "', '" + a_email + "', '" + f_nacimiento + "', '" + a_dir + "', " + a_estrato + ")");
             beca.setValue(null);
             nombretxt.setText("");
@@ -121,6 +121,20 @@ public class FormAspiranteController implements Initializable {
             estrato.setValue(null);
             t_doc.setValue(null);
             direccion.setText("");
+            
+            //Query para crear formulario
+            st = conn.createStatement();
+            rs = st.executeQuery("select count(id) from formulario where aspirante_doc = '"+id_num+"'");
+            int n_form = 0;
+            while (rs.next()) {
+                n_form = rs.getInt(1);
+            }
+            n_form++;
+            String f_idtmp = id_num.substring(0, 6)+becaid ;
+            int f_id = Integer.valueOf(f_idtmp);
+            System.out.println("Formulario ID: "+ f_id);
+            st.executeUpdate("insert into formulario values('" + f_id + "', '" + becaid + "', '" + id_num + "')");
+            
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Datos Incompletos");
